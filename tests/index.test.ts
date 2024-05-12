@@ -157,13 +157,13 @@ describe('instantiate client', () => {
     test('empty env variable', () => {
       process.env['WALLEDAI_BASE_URL'] = ''; // empty
       const client = new Walledai({ bearerToken: 'My Bearer Token' });
-      expect(client.baseURL).toEqual('https://localhost:8080/test-api');
+      expect(client.baseURL).toEqual('http://34.143.172.165');
     });
 
     test('blank env variable', () => {
       process.env['WALLEDAI_BASE_URL'] = '  '; // blank
       const client = new Walledai({ bearerToken: 'My Bearer Token' });
-      expect(client.baseURL).toEqual('https://localhost:8080/test-api');
+      expect(client.baseURL).toEqual('http://34.143.172.165');
     });
   });
 
