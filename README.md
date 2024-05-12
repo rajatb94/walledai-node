@@ -28,7 +28,7 @@ import Walledai from 'walledai';
 const walledai = new Walledai();
 
 async function main() {
-  const rootRetrieveResponse = await walledai.root.retrieve();
+  const moderationCreateResponse = await walledai.moderation.create({ text: 'string' });
 }
 
 main();
@@ -45,7 +45,8 @@ import Walledai from 'walledai';
 const walledai = new Walledai();
 
 async function main() {
-  const rootRetrieveResponse: unknown = await walledai.root.retrieve();
+  const params: Walledai.ModerationCreateParams = { text: 'string' };
+  const moderationCreateResponse: unknown = await walledai.moderation.create(params);
 }
 
 main();
@@ -62,7 +63,7 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const rootRetrieveResponse = await walledai.root.retrieve().catch(async (err) => {
+  const moderationCreateResponse = await walledai.moderation.create({ text: 'string' }).catch(async (err) => {
     if (err instanceof Walledai.APIError) {
       console.log(err.status); // 400
       console.log(err.name); // BadRequestError
@@ -105,7 +106,7 @@ const walledai = new Walledai({
 });
 
 // Or, configure per-request:
-await walledai.root.retrieve({
+await walledai.moderation.create({ text: 'string' }, {
   maxRetries: 5,
 });
 ```
@@ -122,7 +123,7 @@ const walledai = new Walledai({
 });
 
 // Override per-request:
-await walledai.root.retrieve({
+await walledai.moderation.create({ text: 'string' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -143,13 +144,15 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 ```ts
 const walledai = new Walledai();
 
-const response = await walledai.root.retrieve().asResponse();
+const response = await walledai.moderation.create({ text: 'string' }).asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: rootRetrieveResponse, response: raw } = await walledai.root.retrieve().withResponse();
+const { data: moderationCreateResponse, response: raw } = await walledai.moderation
+  .create({ text: 'string' })
+  .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(rootRetrieveResponse);
+console.log(moderationCreateResponse);
 ```
 
 ### Making custom/undocumented requests
@@ -253,9 +256,12 @@ const walledai = new Walledai({
 });
 
 // Override per-request:
-await walledai.root.retrieve({
-  httpAgent: new http.Agent({ keepAlive: false }),
-});
+await walledai.moderation.create(
+  { text: 'string' },
+  {
+    httpAgent: new http.Agent({ keepAlive: false }),
+  },
+);
 ```
 
 ## Semantic versioning

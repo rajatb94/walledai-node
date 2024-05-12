@@ -117,7 +117,6 @@ export class Walledai extends Core.APIClient {
   }
 
   moderation: API.Moderation = new API.Moderation(this);
-  root: API.Root = new API.Root(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -179,9 +178,6 @@ export namespace Walledai {
   export import Moderation = API.Moderation;
   export import ModerationCreateResponse = API.ModerationCreateResponse;
   export import ModerationCreateParams = API.ModerationCreateParams;
-
-  export import Root = API.Root;
-  export import RootRetrieveResponse = API.RootRetrieveResponse;
 }
 
 export default Walledai;
