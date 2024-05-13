@@ -2,7 +2,7 @@
   "name": "walledai",
   "version": "0.0.1-alpha",
   "description": "The official TypeScript library for the Walledai API",
-  "author": "Walledai <dev-feedback@walledai.com>",
+  "author": "Walledai <admin@walledai.com>",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "type": "commonjs",
