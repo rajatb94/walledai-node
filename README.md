@@ -1,21 +1,18 @@
-# Walledai Node API Library
+# WalledAI API Library
 
 [![NPM version](https://img.shields.io/npm/v/walledai.svg)](https://npmjs.org/package/walledai)
 
 This library provides convenient access to the Walledai REST API from server-side TypeScript or JavaScript.
 
-The REST API documentation can be found [on docs.walledai.com](https://docs.walledai.com). The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found [on 34.143.172.165](http://34.143.172.165/docs). The full API of this library can be found in [api.md](api.md).
 
 It is generated with [Stainless](https://www.stainlessapi.com/).
 
 ## Installation
 
 ```sh
-npm install git+ssh://git@github.com:stainless-sdks/walledai-node.git
+npm install walledai
 ```
-
-> [!NOTE]
-> Once this package is [published to npm](https://app.stainlessapi.com/docs/guides/publish), this will become: `npm install walledai`
 
 ## Usage
 
@@ -103,6 +100,7 @@ You can use the `maxRetries` option to configure or disable this:
 // Configure the default for all requests:
 const walledai = new Walledai({
   maxRetries: 0, // default is 2
+  apiKey: 'My API Key',
 });
 
 // Or, configure per-request:
@@ -120,6 +118,7 @@ Requests time out after 1 minute by default. You can configure this with a `time
 // Configure the default for all requests:
 const walledai = new Walledai({
   timeout: 20 * 1000, // 20 seconds (default is 1 minute)
+  apiKey: 'My API Key',
 });
 
 // Override per-request:
@@ -215,7 +214,7 @@ import Walledai from 'walledai';
 ```
 
 To do the inverse, add `import "walledai/shims/node"` (which does import polyfills).
-This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/stainless-sdks/walledai-node/tree/main/src/_shims#readme)).
+This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/rajatb94/walledai-node/tree/main/src/_shims#readme)).
 
 ### Logging and middleware
 
@@ -253,6 +252,7 @@ import { HttpsProxyAgent } from 'https-proxy-agent';
 // Configure the default for all requests:
 const walledai = new Walledai({
   httpAgent: new HttpsProxyAgent(process.env.PROXY_URL),
+  apiKey: 'My API Key',
 });
 
 // Override per-request:
@@ -274,7 +274,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/walledai-node/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/rajatb94/walledai-node/issues) with questions, bugs, or suggestions.
 
 ## Requirements
 
