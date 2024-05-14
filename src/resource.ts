@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import type { Walledai } from './index';
+import type { WalledAI } from './index';
 
 export class APIResource {
-  protected _client: Walledai;
+  protected _client: WalledAI;
 
-  constructor(client: Walledai) {
+  constructor(client: WalledAI) {
     this._client = client;
   }
 }
