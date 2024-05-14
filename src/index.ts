@@ -129,10 +129,6 @@ export class Walledai extends Core.APIClient {
     };
   }
 
-  protected override authHeaders(opts: Core.FinalRequestOptions): Core.Headers {
-    return { Authorization: `Bearer ${this.apiKey}` };
-  }
-
   static Walledai = this;
 
   static WalledaiError = Errors.WalledaiError;
