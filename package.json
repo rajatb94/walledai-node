@@ -2,11 +2,11 @@
   "name": "walledai",
   "version": "0.3.0-alpha",
   "description": "The official TypeScript library for the Walledai API",
-  "author": "Walledai <admin@walledai.com>",
+  "author": "Walledai <dev-feedback@walledai.com>",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "type": "commonjs",
-  "repository": "github:rajatb94/walledai-node",
+  "repository": "github:stainless-sdks/walledai-node",
   "license": "Apache-2.0",
   "packageManager": "yarn@1.22.22",
   "files": [
