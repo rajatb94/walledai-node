@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.0-alpha (2024-05-14)
+
+Full Changelog: [v0.2.0-alpha...v0.3.0-alpha](https://github.com/rajatb94/walledai-node/compare/v0.2.0-alpha...v0.3.0-alpha)
+
+### Features
+
+* **api:** update via SDK Studio ([#9](https://github.com/rajatb94/walledai-node/issues/9)) ([1f5753e](https://github.com/rajatb94/walledai-node/commit/1f5753e95df1b3c0b6f544316ef5a88d81eb6977))
+
 ## 0.2.0-alpha (2024-05-14)
 
 Full Changelog: [v0.1.0-alpha...v0.2.0-alpha](https://github.com/rajatb94/walledai-node/compare/v0.1.0-alpha...v0.2.0-alpha)
