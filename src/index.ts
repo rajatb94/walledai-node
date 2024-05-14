@@ -4,11 +4,11 @@ import * as Core from './core';
 import * as Errors from './error';
 import { type Agent } from './_shims/index';
 import * as Uploads from './uploads';
-import * as API from 'walledai/resources/index';
+import * as API from './resources/index';
 
 export interface ClientOptions {
   /**
-   * Defaults to process.env['WALLEDAI_BEARER_TOKEN'].
+   * Defaults to process.env['api_key'].
    */
   bearerToken?: string | undefined;
 
@@ -78,7 +78,7 @@ export class Walledai extends Core.APIClient {
   /**
    * API Client for interfacing with the Walledai API.
    *
-   * @param {string | undefined} [opts.bearerToken=process.env['WALLEDAI_BEARER_TOKEN'] ?? undefined]
+   * @param {string | undefined} [opts.bearerToken=process.env['api_key'] ?? undefined]
    * @param {string} [opts.baseURL=process.env['WALLEDAI_BASE_URL'] ?? http://34.143.172.165] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
@@ -89,12 +89,12 @@ export class Walledai extends Core.APIClient {
    */
   constructor({
     baseURL = Core.readEnv('WALLEDAI_BASE_URL'),
-    bearerToken = Core.readEnv('WALLEDAI_BEARER_TOKEN'),
+    bearerToken = Core.readEnv('api_key'),
     ...opts
   }: ClientOptions = {}) {
     if (bearerToken === undefined) {
       throw new Errors.WalledaiError(
-        "The WALLEDAI_BEARER_TOKEN environment variable is missing or empty; either provide it, or instantiate the Walledai client with an bearerToken option, like new Walledai({ bearerToken: 'My Bearer Token' }).",
+        "The api_key environment variable is missing or empty; either provide it, or instantiate the Walledai client with an bearerToken option, like new Walledai({ bearerToken: 'My Bearer Token' }).",
       );
     }
 
