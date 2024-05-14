@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as Core from 'walledai/core';
-import { APIResource } from 'walledai/resource';
-import * as ModerationAPI from 'walledai/resources/moderation';
+import * as Core from '../core';
+import { APIResource } from '../resource';
+import * as ModerationAPI from './moderation';
 
 export class Moderation extends APIResource {
   /**
