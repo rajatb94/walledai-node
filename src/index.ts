@@ -69,14 +69,14 @@ export interface ClientOptions {
   defaultQuery?: Core.DefaultQuery;
 }
 
-/** API Client for interfacing with the Walledai API. */
-export class Walledai extends Core.APIClient {
+/** API Client for interfacing with the WALLEDAI API. */
+export class WalledAI extends Core.APIClient {
   apiKey: string;
 
   private _options: ClientOptions;
 
   /**
-   * API Client for interfacing with the Walledai API.
+   * API Client for interfacing with the WALLEDAI API.
    *
    * @param {string | undefined} [opts.apiKey=process.env['WALLEDAI_API_KEY'] ?? undefined]
    * @param {string} [opts.baseURL=process.env['WALLEDAI_BASE_URL'] ?? http://34.143.172.165] - Override the default base URL for the API.
@@ -93,8 +93,8 @@ export class Walledai extends Core.APIClient {
     ...opts
   }: ClientOptions = {}) {
     if (apiKey === undefined) {
-      throw new Errors.WalledaiError(
-        "The WALLEDAI_API_KEY environment variable is missing or empty; either provide it, or instantiate the Walledai client with an apiKey option, like new Walledai({ apiKey: 'My API Key' }).",
+      throw new Errors.WalledAIError(
+        "The WALLEDAI_API_KEY environment variable is missing or empty; either provide it, or instantiate the WalledAI client with an apiKey option, like new WalledAI({ apiKey: 'My API Key' }).",
       );
     }
 
@@ -133,9 +133,9 @@ export class Walledai extends Core.APIClient {
     return { Authorization: `Bearer ${this.apiKey}` };
   }
 
-  static Walledai = this;
+  static WalledAI = this;
 
-  static WalledaiError = Errors.WalledaiError;
+  static WalledAIError = Errors.WalledAIError;
   static APIError = Errors.APIError;
   static APIConnectionError = Errors.APIConnectionError;
   static APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
@@ -154,7 +154,7 @@ export class Walledai extends Core.APIClient {
 }
 
 export const {
-  WalledaiError,
+  WalledAIError,
   APIError,
   APIConnectionError,
   APIConnectionTimeoutError,
@@ -172,7 +172,7 @@ export const {
 export import toFile = Uploads.toFile;
 export import fileFromPath = Uploads.fileFromPath;
 
-export namespace Walledai {
+export namespace WalledAI {
   export import RequestOptions = Core.RequestOptions;
 
   export import Moderation = API.Moderation;
@@ -180,4 +180,4 @@ export namespace Walledai {
   export import ModerationCreateParams = API.ModerationCreateParams;
 }
 
-export default Walledai;
+export default WalledAI;
