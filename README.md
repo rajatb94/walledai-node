@@ -22,7 +22,9 @@ The full API of this library can be found in [api.md](api.md).
 ```js
 import Walledai from 'walledai';
 
-const walledai = new Walledai();
+const walledai = new Walledai({
+  apiKey: process.env['WALLEDAI_API_KEY'], // This is the default and can be omitted
+});
 
 async function main() {
   const moderationCreateResponse = await walledai.moderation.create({ text: 'string' });
@@ -39,7 +41,9 @@ This library includes TypeScript definitions for all request params and response
 ```ts
 import Walledai from 'walledai';
 
-const walledai = new Walledai();
+const walledai = new Walledai({
+  apiKey: process.env['WALLEDAI_API_KEY'], // This is the default and can be omitted
+});
 
 async function main() {
   const params: Walledai.ModerationCreateParams = { text: 'string' };
