@@ -100,7 +100,6 @@ You can use the `maxRetries` option to configure or disable this:
 // Configure the default for all requests:
 const walledai = new Walledai({
   maxRetries: 0, // default is 2
-  bearerToken: 'My Bearer Token',
 });
 
 // Or, configure per-request:
@@ -118,7 +117,6 @@ Requests time out after 1 minute by default. You can configure this with a `time
 // Configure the default for all requests:
 const walledai = new Walledai({
   timeout: 20 * 1000, // 20 seconds (default is 1 minute)
-  bearerToken: 'My Bearer Token',
 });
 
 // Override per-request:
@@ -252,7 +250,6 @@ import { HttpsProxyAgent } from 'https-proxy-agent';
 // Configure the default for all requests:
 const walledai = new Walledai({
   httpAgent: new HttpsProxyAgent(process.env.PROXY_URL),
-  bearerToken: 'My Bearer Token',
 });
 
 // Override per-request:
