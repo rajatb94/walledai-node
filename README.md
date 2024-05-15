@@ -2,7 +2,7 @@
 
 [![NPM version](https://img.shields.io/npm/v/walledai.svg)](https://npmjs.org/package/walledai)
 
-This library provides convenient access to the Walledai REST API from server-side TypeScript or JavaScript.
+This library provides convenient access to the WALLEDAI REST API from server-side TypeScript or JavaScript.
 
 The REST API documentation can be found [on 34.143.172.165](http://34.143.172.165/docs). The full API of this library can be found in [api.md](api.md).
 
@@ -20,14 +20,14 @@ The full API of this library can be found in [api.md](api.md).
 
 <!-- prettier-ignore -->
 ```js
-import Walledai from 'walledai';
+import WalledAI from 'walledai';
 
-const walledai = new Walledai({
+const WalledAI = new WalledAI({
   apiKey: process.env['WALLEDAI_API_KEY'], // This is the default and can be omitted
 });
 
 async function main() {
-  const moderationCreateResponse = await walledai.moderation.create({ text: 'string' });
+  const moderationCreateResponse = await WalledAI.moderation.create({ text: 'string' });
 }
 
 main();
@@ -39,15 +39,15 @@ This library includes TypeScript definitions for all request params and response
 
 <!-- prettier-ignore -->
 ```ts
-import Walledai from 'walledai';
+import WalledAI from 'walledai';
 
-const walledai = new Walledai({
+const WalledAI = new WalledAI({
   apiKey: process.env['WALLEDAI_API_KEY'], // This is the default and can be omitted
 });
 
 async function main() {
-  const params: Walledai.ModerationCreateParams = { text: 'string' };
-  const moderationCreateResponse: unknown = await walledai.moderation.create(params);
+  const params: WalledAI.ModerationCreateParams = { text: 'string' };
+  const moderationCreateResponse: unknown = await WalledAI.moderation.create(params);
 }
 
 main();
@@ -64,8 +64,8 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const moderationCreateResponse = await walledai.moderation.create({ text: 'string' }).catch(async (err) => {
-    if (err instanceof Walledai.APIError) {
+  const moderationCreateResponse = await WalledAI.moderation.create({ text: 'string' }).catch(async (err) => {
+    if (err instanceof WalledAI.APIError) {
       console.log(err.status); // 400
       console.log(err.name); // BadRequestError
       console.log(err.headers); // {server: 'nginx', ...}
@@ -102,12 +102,12 @@ You can use the `maxRetries` option to configure or disable this:
 <!-- prettier-ignore -->
 ```js
 // Configure the default for all requests:
-const walledai = new Walledai({
+const WalledAI = new WalledAI({
   maxRetries: 0, // default is 2
 });
 
 // Or, configure per-request:
-await walledai.moderation.create({ text: 'string' }, {
+await WalledAI.moderation.create({ text: 'string' }, {
   maxRetries: 5,
 });
 ```
@@ -119,12 +119,12 @@ Requests time out after 1 minute by default. You can configure this with a `time
 <!-- prettier-ignore -->
 ```ts
 // Configure the default for all requests:
-const walledai = new Walledai({
+const WalledAI = new WalledAI({
   timeout: 20 * 1000, // 20 seconds (default is 1 minute)
 });
 
 // Override per-request:
-await walledai.moderation.create({ text: 'string' }, {
+await WalledAI.moderation.create({ text: 'string' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -143,13 +143,13 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 
 <!-- prettier-ignore -->
 ```ts
-const walledai = new Walledai();
+const WalledAI = new WalledAI();
 
-const response = await walledai.moderation.create({ text: 'string' }).asResponse();
+const response = await WalledAI.moderation.create({ text: 'string' }).asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: moderationCreateResponse, response: raw } = await walledai.moderation
+const { data: moderationCreateResponse, response: raw } = await WalledAI.moderation
   .create({ text: 'string' })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
@@ -206,13 +206,13 @@ By default, this library uses `node-fetch` in Node, and expects a global `fetch`
 
 If you would prefer to use a global, web-standards-compliant `fetch` function even in a Node environment,
 (for example, if you are running Node with `--experimental-fetch` or using NextJS which polyfills with `undici`),
-add the following import before your first import `from "Walledai"`:
+add the following import before your first import `from "WalledAI"`:
 
 ```ts
 // Tell TypeScript and the package to use the global web fetch instead of node-fetch.
 // Note, despite the name, this does not add any polyfills, but expects them to be provided if needed.
 import 'walledai/shims/web';
-import Walledai from 'walledai';
+import WalledAI from 'walledai';
 ```
 
 To do the inverse, add `import "walledai/shims/node"` (which does import polyfills).
@@ -225,9 +225,9 @@ which can be used to inspect or alter the `Request` or `Response` before/after e
 
 ```ts
 import { fetch } from 'undici'; // as one example
-import Walledai from 'walledai';
+import WalledAI from 'walledai';
 
-const client = new Walledai({
+const client = new WalledAI({
   fetch: async (url: RequestInfo, init?: RequestInit): Promise<Response> => {
     console.log('About to make a request', url, init);
     const response = await fetch(url, init);
@@ -252,12 +252,12 @@ import http from 'http';
 import { HttpsProxyAgent } from 'https-proxy-agent';
 
 // Configure the default for all requests:
-const walledai = new Walledai({
+const WalledAI = new WalledAI({
   httpAgent: new HttpsProxyAgent(process.env.PROXY_URL),
 });
 
 // Override per-request:
-await walledai.moderation.create(
+await WalledAI.moderation.create(
   { text: 'string' },
   {
     httpAgent: new http.Agent({ keepAlive: false }),
@@ -284,7 +284,7 @@ TypeScript >= 4.5 is supported.
 The following runtimes are supported:
 
 - Node.js 18 LTS or later ([non-EOL](https://endoflife.date/nodejs)) versions.
-- Deno v1.28.0 or higher, using `import Walledai from "npm:walledai"`.
+- Deno v1.28.0 or higher, using `import WalledAI from "npm:walledai"`.
 - Bun 1.0 or later.
 - Cloudflare Workers.
 - Vercel Edge Runtime.
