@@ -129,7 +129,7 @@ export class WalledAI extends Core.APIClient {
     };
   }
 
-  static WalledAI = this;
+
 
   static WalledAIError = Errors.WalledAIError;
   static APIError = Errors.APIError;
