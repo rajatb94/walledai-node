@@ -2,9 +2,9 @@
 
 import { castToError, Headers } from './core';
 
-export class WalledaiError extends Error {}
+export class WalledAIError extends Error {}
 
-export class APIError extends WalledaiError {
+export class APIError extends WalledAIError {
   readonly status: number | undefined;
   readonly headers: Headers | undefined;
   readonly error: Object | undefined;

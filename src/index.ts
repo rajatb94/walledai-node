@@ -8,9 +8,9 @@ import * as API from './resources/index';
 
 export interface ClientOptions {
   /**
-   * Defaults to process.env['api_key'].
+   * Defaults to process.env['WALLEDAI_API_KEY'].
    */
-  bearerToken?: string | undefined;
+  apiKey?: string | undefined;
 
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
@@ -69,16 +69,16 @@ export interface ClientOptions {
   defaultQuery?: Core.DefaultQuery;
 }
 
-/** API Client for interfacing with the Walledai API. */
-export class Walledai extends Core.APIClient {
-  bearerToken: string;
+/** API Client for interfacing with the WALLEDAI API. */
+export class WalledAI extends Core.APIClient {
+  apiKey: string;
 
   private _options: ClientOptions;
 
   /**
-   * API Client for interfacing with the Walledai API.
+   * API Client for interfacing with the WALLEDAI API.
    *
-   * @param {string | undefined} [opts.bearerToken=process.env['api_key'] ?? undefined]
+   * @param {string | undefined} [opts.apiKey=process.env['WALLEDAI_API_KEY'] ?? undefined]
    * @param {string} [opts.baseURL=process.env['WALLEDAI_BASE_URL'] ?? http://34.143.172.165] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
@@ -89,17 +89,17 @@ export class Walledai extends Core.APIClient {
    */
   constructor({
     baseURL = Core.readEnv('WALLEDAI_BASE_URL'),
-    bearerToken = Core.readEnv('api_key'),
+    apiKey = Core.readEnv('WALLEDAI_API_KEY'),
     ...opts
   }: ClientOptions = {}) {
-    if (bearerToken === undefined) {
-      throw new Errors.WalledaiError(
-        "The api_key environment variable is missing or empty; either provide it, or instantiate the Walledai client with an bearerToken option, like new Walledai({ bearerToken: 'My Bearer Token' }).",
+    if (apiKey === undefined) {
+      throw new Errors.WalledAIError(
+        "The WALLEDAI_API_KEY environment variable is missing or empty; either provide it, or instantiate the WalledAI client with an apiKey option, like new WalledAI({ apiKey: 'My API Key' }).",
       );
     }
 
     const options: ClientOptions = {
-      bearerToken,
+      apiKey,
       ...opts,
       baseURL: baseURL || `http://34.143.172.165`,
     };
@@ -113,7 +113,7 @@ export class Walledai extends Core.APIClient {
     });
     this._options = options;
 
-    this.bearerToken = bearerToken;
+    this.apiKey = apiKey;
   }
 
   moderation: API.Moderation = new API.Moderation(this);
@@ -130,12 +130,12 @@ export class Walledai extends Core.APIClient {
   }
 
   protected override authHeaders(opts: Core.FinalRequestOptions): Core.Headers {
-    return { Authorization: `Bearer ${this.bearerToken}` };
+    return { Authorization: `Bearer ${this.apiKey}` };
   }
 
-  static Walledai = this;
+  static WalledAI = this;
 
-  static WalledaiError = Errors.WalledaiError;
+  static WalledAIError = Errors.WalledAIError;
   static APIError = Errors.APIError;
   static APIConnectionError = Errors.APIConnectionError;
   static APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
@@ -154,7 +154,7 @@ export class Walledai extends Core.APIClient {
 }
 
 export const {
-  WalledaiError,
+  WalledAIError,
   APIError,
   APIConnectionError,
   APIConnectionTimeoutError,
@@ -172,7 +172,7 @@ export const {
 export import toFile = Uploads.toFile;
 export import fileFromPath = Uploads.fileFromPath;
 
-export namespace Walledai {
+export namespace WalledAI {
   export import RequestOptions = Core.RequestOptions;
 
   export import Moderation = API.Moderation;
@@ -180,4 +180,4 @@ export namespace Walledai {
   export import ModerationCreateParams = API.ModerationCreateParams;
 }
 
-export default Walledai;
+export default WalledAI;
