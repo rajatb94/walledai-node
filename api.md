@@ -6,4 +6,4 @@ Types:
 
 Methods:
 
-- <code title="post /api/moderation/">client.moderation.<a href="./src/resources/moderation.ts">create</a>({ ...params }) -> unknown</code>
+- <code title="post /guardrail">client.moderation.<a href="./src/resources/moderation.ts">create</a>({ ...params }) -> unknown</code>
