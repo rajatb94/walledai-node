@@ -1,10 +1,11 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+import { type Agent } from './_shims/index';
 import * as Core from './core';
 import * as Errors from './error';
-import { type Agent } from './_shims/index';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
+import { Moderation, ModerationCreateParams, ModerationCreateResponse } from './resources/moderation';
 
 export interface ClientOptions {
   /**
@@ -26,7 +27,7 @@ export interface ClientOptions {
    * Note that request timeouts are retried by default, so in a worst-case scenario you may wait
    * much longer than this timeout before the promise succeeds or fails.
    */
-  timeout?: number;
+  timeout?: number | undefined;
 
   /**
    * An HTTP agent used to manage HTTP(S) connections.
@@ -34,7 +35,7 @@ export interface ClientOptions {
    * If not provided, an agent will be constructed by default in the Node.js environment,
    * otherwise no agent is used.
    */
-  httpAgent?: Agent;
+  httpAgent?: Agent | undefined;
 
   /**
    * Specify a custom `fetch` function implementation.
@@ -50,7 +51,7 @@ export interface ClientOptions {
    *
    * @default 2
    */
-  maxRetries?: number;
+  maxRetries?: number | undefined;
 
   /**
    * Default headers to include with every request to the API.
@@ -58,7 +59,7 @@ export interface ClientOptions {
    * These can be removed in individual requests by explicitly setting the
    * header to `undefined` or `null` in request options.
    */
-  defaultHeaders?: Core.Headers;
+  defaultHeaders?: Core.Headers | undefined;
 
   /**
    * Default query parameters to include with every request to the API.
@@ -66,10 +67,12 @@ export interface ClientOptions {
    * These can be removed in individual requests by explicitly setting the
    * param to `undefined` in request options.
    */
-  defaultQuery?: Core.DefaultQuery;
+  defaultQuery?: Core.DefaultQuery | undefined;
 }
 
-/** API Client for interfacing with the WALLEDAI API. */
+/**
+ * API Client for interfacing with the WALLEDAI API.
+ */
 export class WalledAI extends Core.APIClient {
   apiKey: string;
 
@@ -79,7 +82,7 @@ export class WalledAI extends Core.APIClient {
    * API Client for interfacing with the WALLEDAI API.
    *
    * @param {string | undefined} [opts.apiKey=process.env['WALLEDAI_API_KEY'] ?? undefined]
-   * @param {string} [opts.baseURL=process.env['WALLEDAI_BASE_URL'] ?? http://34.143.172.165] - Override the default base URL for the API.
+   * @param {string} [opts.baseURL=process.env['WALLEDAI_BASE_URL'] ?? https://idy5alt3vg.execute-api.ap-southeast-1.amazonaws.com/Development] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
    * @param {Core.Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -101,7 +104,7 @@ export class WalledAI extends Core.APIClient {
     const options: ClientOptions = {
       apiKey,
       ...opts,
-      baseURL: baseURL || `http://34.143.172.165`,
+      baseURL: baseURL || `https://idy5alt3vg.execute-api.ap-southeast-1.amazonaws.com/Development`,
     };
 
     super({
@@ -111,6 +114,7 @@ export class WalledAI extends Core.APIClient {
       maxRetries: options.maxRetries,
       fetch: options.fetch,
     });
+
     this._options = options;
 
     this.apiKey = apiKey;
@@ -134,6 +138,7 @@ export class WalledAI extends Core.APIClient {
   }
 
   static WalledAI = this;
+  static DEFAULT_TIMEOUT = 60000; // 1 minute
 
   static WalledAIError = Errors.WalledAIError;
   static APIError = Errors.APIError;
@@ -153,7 +158,19 @@ export class WalledAI extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-export const {
+WalledAI.Moderation = Moderation;
+export declare namespace WalledAI {
+  export type RequestOptions = Core.RequestOptions;
+
+  export {
+    Moderation as Moderation,
+    type ModerationCreateResponse as ModerationCreateResponse,
+    type ModerationCreateParams as ModerationCreateParams,
+  };
+}
+
+export { toFile, fileFromPath } from './uploads';
+export {
   WalledAIError,
   APIError,
   APIConnectionError,
@@ -167,17 +184,6 @@ export const {
   InternalServerError,
   PermissionDeniedError,
   UnprocessableEntityError,
-} = Errors;
-
-export import toFile = Uploads.toFile;
-export import fileFromPath = Uploads.fileFromPath;
-
-export namespace WalledAI {
-  export import RequestOptions = Core.RequestOptions;
-
-  export import Moderation = API.Moderation;
-  export import ModerationCreateResponse = API.ModerationCreateResponse;
-  export import ModerationCreateParams = API.ModerationCreateParams;
-}
+} from './error';
 
 export default WalledAI;
