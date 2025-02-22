@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.5.0-alpha (2025-02-22)
+
+Full Changelog: [v0.4.0-alpha...v0.5.0-alpha](https://github.com/rajatb94/walledai-node/compare/v0.4.0-alpha...v0.5.0-alpha)
+
+### Features
+
+* **client:** send `X-Stainless-Timeout` header ([#32](https://github.com/rajatb94/walledai-node/issues/32)) ([79eb54c](https://github.com/rajatb94/walledai-node/commit/79eb54c5d4e5ec55d535c2fe22471efbf74dee48))
+
+
+### Bug Fixes
+
+* **client:** fix export map for index exports ([#34](https://github.com/rajatb94/walledai-node/issues/34)) ([67115a6](https://github.com/rajatb94/walledai-node/commit/67115a6a82d96ed284da4f061d01a76962732912))
+
+
+### Chores
+
+* **internal:** fix devcontainers setup ([#35](https://github.com/rajatb94/walledai-node/issues/35)) ([421b5b1](https://github.com/rajatb94/walledai-node/commit/421b5b1222d751b2ecd5fb9ab309a4ce1899ffed))
+
 ## 0.4.0-alpha (2025-01-24)
 
 Full Changelog: [v0.3.0-alpha...v0.4.0-alpha](https://github.com/rajatb94/walledai-node/compare/v0.3.0-alpha...v0.4.0-alpha)
