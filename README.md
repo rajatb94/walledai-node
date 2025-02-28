@@ -6,7 +6,7 @@ This library provides convenient access to the WALLEDAI REST API from server-sid
 
 The REST API documentation can be found on [34.143.172.165](http://34.143.172.165/docs). The full API of this library can be found in [api.md](api.md).
 
-It is generated with [Stainless](https://www.stainlessapi.com/).
+It is generated with [Stainless](https://www.stainless.com/).
 
 ## Installation
 
