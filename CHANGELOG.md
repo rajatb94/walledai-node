@@ -1,5 +1,37 @@
 # Changelog
 
+## 0.5.0-alpha (2025-04-03)
+
+Full Changelog: [v0.4.0-alpha...v0.5.0-alpha](https://github.com/rajatb94/walledai-node/compare/v0.4.0-alpha...v0.5.0-alpha)
+
+### Features
+
+* add SKIP_BREW env var to ./scripts/bootstrap ([#37](https://github.com/rajatb94/walledai-node/issues/37)) ([f752cd8](https://github.com/rajatb94/walledai-node/commit/f752cd85e94b975251c49d57098808aea09f5f66))
+* **client:** accept RFC6838 JSON content types ([#38](https://github.com/rajatb94/walledai-node/issues/38)) ([7e4b964](https://github.com/rajatb94/walledai-node/commit/7e4b9649224e13bc7fdb7a5fd5c478f41dc46fd8))
+* **client:** send `X-Stainless-Timeout` header ([#32](https://github.com/rajatb94/walledai-node/issues/32)) ([79eb54c](https://github.com/rajatb94/walledai-node/commit/79eb54c5d4e5ec55d535c2fe22471efbf74dee48))
+
+
+### Bug Fixes
+
+* avoid type error in certain environments ([#42](https://github.com/rajatb94/walledai-node/issues/42)) ([351c435](https://github.com/rajatb94/walledai-node/commit/351c43521c5c6efed05e1530ecbab1727ba6490f))
+* **client:** fix export map for index exports ([#34](https://github.com/rajatb94/walledai-node/issues/34)) ([67115a6](https://github.com/rajatb94/walledai-node/commit/67115a6a82d96ed284da4f061d01a76962732912))
+* **client:** send `X-Stainless-Timeout` in seconds ([#44](https://github.com/rajatb94/walledai-node/issues/44)) ([3126ba5](https://github.com/rajatb94/walledai-node/commit/3126ba5607f8163648a327ee398a4bb87cfcb078))
+* **internal:** work around https://github.com/vercel/next.js/issues/76881 ([#43](https://github.com/rajatb94/walledai-node/issues/43)) ([e672eea](https://github.com/rajatb94/walledai-node/commit/e672eeae7a9c78501306abdd61af544c36ac509c))
+
+
+### Chores
+
+* **exports:** cleaner resource index imports ([#40](https://github.com/rajatb94/walledai-node/issues/40)) ([91b4d95](https://github.com/rajatb94/walledai-node/commit/91b4d950e9cec3a09bf53d1b4066163fd7d9f256))
+* **exports:** stop using path fallbacks ([#41](https://github.com/rajatb94/walledai-node/issues/41)) ([fc36f27](https://github.com/rajatb94/walledai-node/commit/fc36f2754cb7bfdbf4c64e1a447c526d8e3674e4))
+* **internal:** add aliases for Record and Array ([#45](https://github.com/rajatb94/walledai-node/issues/45)) ([21a0d64](https://github.com/rajatb94/walledai-node/commit/21a0d641b3ca893bfba7adb8bf7ce4813df7adb4))
+* **internal:** fix devcontainers setup ([#35](https://github.com/rajatb94/walledai-node/issues/35)) ([421b5b1](https://github.com/rajatb94/walledai-node/commit/421b5b1222d751b2ecd5fb9ab309a4ce1899ffed))
+* **internal:** remove extra empty newlines ([#39](https://github.com/rajatb94/walledai-node/issues/39)) ([4da8c99](https://github.com/rajatb94/walledai-node/commit/4da8c99784c1ed6d31ec84b4505acfdca5986e55))
+
+
+### Documentation
+
+* update URLs from stainlessapi.com to stainless.com ([#36](https://github.com/rajatb94/walledai-node/issues/36)) ([b350ae9](https://github.com/rajatb94/walledai-node/commit/b350ae99ed757599b51a02ba5c5f818942541d7c))
+
 ## 0.4.0-alpha (2025-01-24)
 
 Full Changelog: [v0.3.0-alpha...v0.4.0-alpha](https://github.com/rajatb94/walledai-node/compare/v0.3.0-alpha...v0.4.0-alpha)
