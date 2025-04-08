@@ -16,6 +16,10 @@
     "build": "npm run build:cjs && npm run build:esm",
     "build:cjs": "tsc -p tsconfig.cjs.json",
     "build:esm": "tsc -p tsconfig.esm.json",
+    "check-release": "./bin/check-release-environment",
+    "publish-npm": "./bin/publish-npm",
+    "lint": "eslint . --ext .ts",
+    "typecheck": "tsc --noEmit",
     "clean": "rm -rf dist"
   },
   "keywords": [
