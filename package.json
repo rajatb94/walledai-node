@@ -32,6 +32,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/axios": "^0.9.36",
+    "eslint": "^9.24.0",
     "typescript": "^5.0.0"
   },
   "type": "module",
