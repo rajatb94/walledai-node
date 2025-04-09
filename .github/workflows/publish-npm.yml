@@ -25,6 +25,10 @@ jobs:
       - name: Run build
         run: npm run build
 
+      - name: Debug NPM_TOKEN value
+        run: echo "NPM_TOKEN is  ${NPM_TOKEN:-not set}"
+        env:
+          NPM_TOKEN: ${{ secrets.WALLEDAI_NPM_TOKEN }}
       - name: Run checks
         run: |
           chmod +x ./bin/check-release-environment
