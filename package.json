@@ -32,6 +32,8 @@
   "license": "MIT",
   "devDependencies": {
     "@types/axios": "^0.9.36",
+    "@typescript-eslint/eslint-plugin": "^8.29.1",
+    "@typescript-eslint/parser": "^8.29.1",
     "eslint": "^9.24.0",
     "typescript": "^5.0.0"
   },
